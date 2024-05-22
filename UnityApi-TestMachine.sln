@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34714.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityApi-TestMachine", "UnityApi-TestMachine.csproj", "{A192E57E-D048-436C-879A-8E735DABF66E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A192E57E-D048-436C-879A-8E735DABF66E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A192E57E-D048-436C-879A-8E735DABF66E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A192E57E-D048-436C-879A-8E735DABF66E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A192E57E-D048-436C-879A-8E735DABF66E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1E284158-A9BF-4118-B228-E4BEA5FE62A7}
+	EndGlobalSection
+EndGlobal
