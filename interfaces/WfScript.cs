@@ -1,6 +1,4 @@
-﻿using UnityApi.Types;
-
-namespace TestWorkflowScript
+﻿namespace UnityApi.Interfaces
 {
     using System;
     using System.Text;
@@ -26,7 +24,7 @@ namespace TestWorkflowScript
         /// <param name="args"></param>
         public void OnWorkflowScriptExecute(Hyland.Unity.Application app, UnityApi.Types.WorkflowEventArgs args)
         {
-            
+            app.Diagnostics.Write("Hello World");
         }
         #endregion
     }

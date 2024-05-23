@@ -1,16 +1,12 @@
-﻿using Hyland.Unity.EnterpriseIntegrationServer;
-using Hyland.Unity;
+﻿using Hyland.Unity;
+using Hyland.Unity.EnterpriseIntegrationServer;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Numerics;
 
 namespace UnityApi.Types
 {
-    public class OnBaseConnection
+    public class OnBaseConnection : IDisposable
     {
         public OnBaseConnection(string username, string password, string appserver, string datasource)
         {
@@ -23,12 +19,23 @@ namespace UnityApi.Types
         public string Password { get; set; }
         public string AppServer { get; set; }
         public string DataSource { get; set; }
-        public Application Application { get; set; }
+        public Application Application { get; private set; }
 
         public void Connect()
         {
             Hyland.Unity.AuthenticationProperties props = Hyland.Unity.Application.CreateOnBaseAuthenticationProperties(this.AppServer, this.UserName, this.Password, this.DataSource);
             this.Application = Hyland.Unity.Application.Connect(props);
+        }
+        public void Dispose()
+        {
+            if (this.Application != null)
+            {
+                if (this.IsConnected)
+                {
+                    this.Application.Disconnect();
+                }
+                this.Application?.Dispose();
+            }
         }
         public bool IsConnected
         {
@@ -53,13 +60,13 @@ namespace UnityApi.Types
 
         public PropertyBag PersistentPropertyBag { get; }
 
-        public PropertyBag PropertyBag { get; set;  }
+        public PropertyBag PropertyBag { get; set; }
 
         public Hyland.Unity.Workflow.Queue Queue { get; }
 
         public bool ScriptResult { get; set; }
 
-        public PropertyBag SessionPropertyBag { get; set;  }
+        public PropertyBag SessionPropertyBag { get; set; }
 
         public WorkflowEventArgs(Hyland.Unity.Document document, Hyland.Unity.Workflow.Queue queue, UnityApi.Types.PropertyBag sessionPropertyBag, UnityApi.Types.PropertyBag scopedPropertyBag, UnityApi.Types.PropertyBag persistentPropertyBag, long batchDocumentsRemaining, bool scriptResult)
             : base(document)
