@@ -24,7 +24,12 @@
         /// <param name="args"></param>
         public void OnWorkflowScriptExecute(Hyland.Unity.Application app, UnityApi.Types.WorkflowEventArgs args)
         {
-            app.Diagnostics.Write("Hello World");
+            string hello = string.Empty;
+            if(!args.PropertyBag.TryGetValue("pbHello1", out hello))
+            {
+                app.Diagnostics.Write("Can't find property pbHello1");
+            }
+            
         }
         #endregion
     }

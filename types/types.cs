@@ -25,6 +25,7 @@ namespace UnityApi.Types
         {
             Hyland.Unity.AuthenticationProperties props = Hyland.Unity.Application.CreateOnBaseAuthenticationProperties(this.AppServer, this.UserName, this.Password, this.DataSource);
             this.Application = Hyland.Unity.Application.Connect(props);
+            Console.WriteLine($"|------- ...Conected with session id: {this.Application.SessionID}");
         }
         public void Dispose()
         {

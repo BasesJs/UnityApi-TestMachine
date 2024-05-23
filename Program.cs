@@ -22,13 +22,16 @@ namespace UnityScriptTester
             IDictionary<string, object> sessionPb = new Dictionary<string, object>();
             /* ADD ANY SESSION PROPERTIES */
             IDictionary<string, object> scopedPb = new Dictionary<string, object>();
+            scopedPb.Add("pbHello", "Hello World");
             /* ADD ANY SCOPED PROPERTIES */
             IDictionary<string, object> persistentPb = new Dictionary<string, object>();
             /* ADD ANY PERSISTANT PROPERTIES */
 
             /* CONNECT TO ONBASE */
             OnBaseConnection conn = OnBaseConnection.Create(username, password, appserver, datasource);
+            Console.WriteLine($"|------- Attempting to connect with username {username} to {appserver} with datasource {datasource}");
             conn.Connect();
+
 
             /* New Script */
             WorkflowScript script = new WorkflowScript();
@@ -44,16 +47,20 @@ namespace UnityScriptTester
             
             try
             {
+                Console.WriteLine("|------- Executing Script");
                 script.OnWorkflowScriptExecute(conn.Application, wfArgs);
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
             }
             finally
             {
                 conn.Dispose();
             }
+            Console.WriteLine("|------- Disconnected");
+            Console.ReadLine(); 
         }
     }
 }
